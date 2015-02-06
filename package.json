@@ -1,0 +1,33 @@
+{
+  "name": "oculus-web",
+  "version": "0.0.1",
+  "description": "A simple demo of oculus running in the browser",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/node-js-getting-started"
+  },
+  "keywords": [
+    "oculus",
+    "web",
+    "chromium",
+    "threejs",
+    "three"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.69.0"
+  },
+  "devDependencies": {
+    "browserify": "^8.1.3",
+    "gulp": "^3.8.10",
+    "gulp-browserify": "^0.5.1",
+    "gulp-uglify": "^1.1.0"
+  }
+}
