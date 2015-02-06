@@ -6,14 +6,13 @@ var gulp = require('gulp'),
 	source = require('vinyl-source-stream'),
 	buffer = require('vinyl-buffer');
 
-
 gulp.task('browserify', ['clean'], function () {
 	browserify('./src/js/app.js')
 		.bundle()
 		.pipe(source('bundle.js'))
-		.pipe(buffer())
-		.pipe(uglify())
-		.pipe(gulp.dest('./dist/'));
+		// .pipe(buffer())
+		// .pipe(uglify())
+		.pipe(gulp.dest('./dist/'))
 });
 
 gulp.task('connect', function() {
