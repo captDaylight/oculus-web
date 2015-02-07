@@ -22,7 +22,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "three": "^0.69.0"
+    "three": "^0.7.0"
   },
   "devDependencies": {
     "browserify": "^8.1.3",

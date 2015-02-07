@@ -1,0 +1,159 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/Users/paulchristophe/.node/bin/npm', 'install' ]
+2 info using npm@2.1.3
+3 info using node@v0.10.21
+4 verbose install where, deps [ '/Users/paulchristophe/projects/oculus-web',
+4 verbose install   [ 'three',
+4 verbose install     'browserify',
+4 verbose install     'gulp',
+4 verbose install     'gulp-clean',
+4 verbose install     'gulp-connect',
+4 verbose install     'gulp-uglify',
+4 verbose install     'vinyl-buffer',
+4 verbose install     'vinyl-source-stream' ] ]
+5 info preinstall oculus-web@0.0.1
+6 verbose already installed skipping vinyl-buffer@^1.0.0 /Users/paulchristophe/projects/oculus-web
+7 verbose already installed skipping gulp-uglify@^1.1.0 /Users/paulchristophe/projects/oculus-web
+8 verbose already installed skipping vinyl-source-stream@^1.0.0 /Users/paulchristophe/projects/oculus-web
+9 verbose already installed skipping browserify@^8.1.3 /Users/paulchristophe/projects/oculus-web
+10 silly cache add args [ 'three@^0.7.0', null ]
+11 verbose cache add spec three@^0.7.0
+12 silly cache add parsed spec { raw: 'three@^0.7.0',
+12 silly cache add   scope: null,
+12 silly cache add   name: 'three',
+12 silly cache add   rawSpec: '^0.7.0',
+12 silly cache add   spec: '>=0.7.0 <0.8.0',
+12 silly cache add   type: 'range' }
+13 verbose addNamed three@>=0.7.0 <0.8.0
+14 verbose addNamed three@>=0.7.0 <0.8.0 not in flight; adding
+15 silly addNamed semver.valid null
+16 silly addNamed semver.validRange >=0.7.0 <0.8.0
+17 silly addNameRange { name: 'three', range: '>=0.7.0 <0.8.0', hasData: false }
+18 verbose mapToRegistry name three
+19 verbose mapToRegistry uri https://registry.npmjs.org/three
+20 verbose already installed skipping gulp@^3.8.10 /Users/paulchristophe/projects/oculus-web
+21 verbose already installed skipping gulp-clean@^0.3.1 /Users/paulchristophe/projects/oculus-web
+22 verbose request on initialization, where is /three
+23 verbose request after pass 1, where is /three
+24 verbose request url raw /three
+25 verbose request resolving registry [ 'https://registry.npmjs.org/', './three' ]
+26 verbose request after pass 2, where is https://registry.npmjs.org/three
+27 verbose request no auth needed
+28 info attempt registry request try #1 at 15:04:58
+29 verbose request id cbe46d05f08af008
+30 verbose etag "BWATVJL4JBGCQ3MVTJZO2JZOR"
+31 http request GET https://registry.npmjs.org/three
+32 verbose already installed skipping gulp-connect@^2.2.0 /Users/paulchristophe/projects/oculus-web
+33 http 304 https://registry.npmjs.org/three
+34 silly registry.get cb [ 304,
+34 silly registry.get   { date: 'Sat, 07 Feb 2015 20:04:57 GMT',
+34 silly registry.get     server: 'Apache',
+34 silly registry.get     via: '1.1 varnish',
+34 silly registry.get     'last-modified': 'Sat, 07 Feb 2015 20:04:58 GMT',
+34 silly registry.get     'cache-control': 'max-age=60',
+34 silly registry.get     etag: '"BWATVJL4JBGCQ3MVTJZO2JZOR"',
+34 silly registry.get     age: '0',
+34 silly registry.get     'x-served-by': 'cache-iad2141-IAD',
+34 silly registry.get     'x-cache': 'MISS',
+34 silly registry.get     'x-cache-hits': '0',
+34 silly registry.get     'x-timer': 'S1423339497.678465,VS0,VE326',
+34 silly registry.get     vary: 'Accept',
+34 silly registry.get     'content-length': '0',
+34 silly registry.get     'keep-alive': 'timeout=10, max=50',
+34 silly registry.get     connection: 'Keep-Alive' } ]
+35 verbose etag https://registry.npmjs.org/three from cache
+36 silly addNameRange number 2 { name: 'three', range: '>=0.7.0 <0.8.0', hasData: true }
+37 silly addNameRange versions [ 'three',
+37 silly addNameRange   [ '0.54.0-dev',
+37 silly addNameRange     '0.54.1-dev',
+37 silly addNameRange     '0.54.2-dev',
+37 silly addNameRange     '0.54.3-dev',
+37 silly addNameRange     '0.54.4-dev',
+37 silly addNameRange     '0.54.5-dev',
+37 silly addNameRange     '0.54.6-dev',
+37 silly addNameRange     '0.54.7-dev',
+37 silly addNameRange     '0.54.8-dev',
+37 silly addNameRange     '0.54.9-dev',
+37 silly addNameRange     '0.54.10-dev',
+37 silly addNameRange     '0.54.11-dev',
+37 silly addNameRange     '0.54.12-dev',
+37 silly addNameRange     '0.54.0',
+37 silly addNameRange     '0.55.0',
+37 silly addNameRange     '0.56.0',
+37 silly addNameRange     '0.56.1',
+37 silly addNameRange     '0.56.2',
+37 silly addNameRange     '0.56.3',
+37 silly addNameRange     '0.56.4',
+37 silly addNameRange     '0.58.1',
+37 silly addNameRange     '0.58.2',
+37 silly addNameRange     '0.58.3',
+37 silly addNameRange     '0.58.4',
+37 silly addNameRange     '0.58.5',
+37 silly addNameRange     '0.58.6',
+37 silly addNameRange     '0.56.7',
+37 silly addNameRange     '0.58.7',
+37 silly addNameRange     '0.58.8',
+37 silly addNameRange     '0.58.9',
+37 silly addNameRange     '0.58.10',
+37 silly addNameRange     '0.66.0',
+37 silly addNameRange     '0.66.1',
+37 silly addNameRange     '0.66.2',
+37 silly addNameRange     '0.67.0',
+37 silly addNameRange     '0.68.0',
+37 silly addNameRange     '0.66.6',
+37 silly addNameRange     '0.66.7',
+37 silly addNameRange     '0.66.8',
+37 silly addNameRange     '0.66.9',
+37 silly addNameRange     '0.66.10',
+37 silly addNameRange     '0.66.11',
+37 silly addNameRange     '0.66.12',
+37 silly addNameRange     '0.66.13',
+37 silly addNameRange     '0.66.14',
+37 silly addNameRange     '0.66.15',
+37 silly addNameRange     '0.66.16',
+37 silly addNameRange     '0.66.17',
+37 silly addNameRange     '0.66.18',
+37 silly addNameRange     '0.66.19',
+37 silly addNameRange     '0.69.0',
+37 silly addNameRange     '0.66.20',
+37 silly addNameRange     '0.66.21',
+37 silly addNameRange     '0.66.22',
+37 silly addNameRange     '0.66.23',
+37 silly addNameRange     '0.66.24',
+37 silly addNameRange     '0.66.25',
+37 silly addNameRange     '0.66.26',
+37 silly addNameRange     '0.66.27',
+37 silly addNameRange     '0.66.28',
+37 silly addNameRange     '0.66.29',
+37 silly addNameRange     '0.66.30',
+37 silly addNameRange     '0.66.31',
+37 silly addNameRange     '0.66.32-dev',
+37 silly addNameRange     '0.66.35',
+37 silly addNameRange     '0.66.36',
+37 silly addNameRange     '0.66.37',
+37 silly addNameRange     '0.66.38',
+37 silly addNameRange     '0.66.39',
+37 silly addNameRange     '0.66.40' ] ]
+38 verbose stack Error: No compatible version found: three@'>=0.7.0 <0.8.0'
+38 verbose stack Valid install targets:
+38 verbose stack ["0.54.0-dev","0.54.1-dev","0.54.2-dev","0.54.3-dev","0.54.4-dev","0.54.5-dev","0.54.6-dev","0.54.7-dev","0.54.8-dev","0.54.9-dev","0.54.10-dev","0.54.11-dev","0.54.12-dev","0.54.0","0.55.0","0.56.0","0.56.1","0.56.2","0.56.3","0.56.4","0.58.1","0.58.2","0.58.3","0.58.4","0.58.5","0.58.6","0.56.7","0.58.7","0.58.8","0.58.9","0.58.10","0.66.0","0.66.1","0.66.2","0.67.0","0.68.0","0.66.6","0.66.7","0.66.8","0.66.9","0.66.10","0.66.11","0.66.12","0.66.13","0.66.14","0.66.15","0.66.16","0.66.17","0.66.18","0.66.19","0.69.0","0.66.20","0.66.21","0.66.22","0.66.23","0.66.24","0.66.25","0.66.26","0.66.27","0.66.28","0.66.29","0.66.30","0.66.31","0.66.32-dev","0.66.35","0.66.36","0.66.37","0.66.38","0.66.39","0.66.40"]
+38 verbose stack
+38 verbose stack     at installTargetsError (/Users/paulchristophe/.node/lib/node_modules/npm/lib/cache/add-named.js:262:12)
+38 verbose stack     at next (/Users/paulchristophe/.node/lib/node_modules/npm/lib/cache/add-named.js:241:17)
+38 verbose stack     at setData (/Users/paulchristophe/.node/lib/node_modules/npm/lib/cache/add-named.js:218:5)
+38 verbose stack     at saved (/Users/paulchristophe/.node/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:167:7)
+38 verbose stack     at Object.oncomplete (fs.js:107:15)
+39 verbose cwd /Users/paulchristophe/projects/oculus-web
+40 error Darwin 13.0.0
+41 error argv "node" "/Users/paulchristophe/.node/bin/npm" "install"
+42 error node v0.10.21
+43 error npm  v2.1.3
+44 error code ETARGET
+45 error notarget No compatible version found: three@'>=0.7.0 <0.8.0'
+45 error notarget Valid install targets:
+45 error notarget ["0.54.0-dev","0.54.1-dev","0.54.2-dev","0.54.3-dev","0.54.4-dev","0.54.5-dev","0.54.6-dev","0.54.7-dev","0.54.8-dev","0.54.9-dev","0.54.10-dev","0.54.11-dev","0.54.12-dev","0.54.0","0.55.0","0.56.0","0.56.1","0.56.2","0.56.3","0.56.4","0.58.1","0.58.2","0.58.3","0.58.4","0.58.5","0.58.6","0.56.7","0.58.7","0.58.8","0.58.9","0.58.10","0.66.0","0.66.1","0.66.2","0.67.0","0.68.0","0.66.6","0.66.7","0.66.8","0.66.9","0.66.10","0.66.11","0.66.12","0.66.13","0.66.14","0.66.15","0.66.16","0.66.17","0.66.18","0.66.19","0.69.0","0.66.20","0.66.21","0.66.22","0.66.23","0.66.24","0.66.25","0.66.26","0.66.27","0.66.28","0.66.29","0.66.30","0.66.31","0.66.32-dev","0.66.35","0.66.36","0.66.37","0.66.38","0.66.39","0.66.40"]
+45 error notarget
+45 error notarget This is most likely not a problem with npm itself.
+45 error notarget In most cases you or one of your dependencies are requesting
+45 error notarget a package version that doesn't exist.
+46 verbose exit [ 1, true ]
