@@ -5,9 +5,40 @@
 				margin: 0px;
 				padding: 0px;
 			}
+
+			.menu {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+			}
+
+			.button {
+				display: inline-block;
+				padding: 8px;
+				color: #FFF;
+				background-color: #555;
+			}
+
+			.button.enabled {
+				background-color: rgb(18, 36, 70);
+			}
+
+			.button:hover {
+				cursor: pointer;
+				background-color: rgb(18, 36, 70);
+			}
+
+			.button.error {
+				pointer-events: none;
+				background-color: red;
+			}
 		</style>
 	</head>
 	<body>
+		<div class="menu">
+			<div class="button mouse-look">Enable Mouse Look</div>
+			<div class="button full-screen">Start VR Mode</div>
+		</div>
 		<script type="text/javascript" src="dist/bundle.js"></script>
 	</body>
 </html>
