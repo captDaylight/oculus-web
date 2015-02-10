@@ -1,6 +1,7 @@
 'use strict';
 // requires
 var THREE = require('./three');
+var Projector = require('./Projector');
 var VREffect = require('./VREffect');
 var VRControls = require('./VRControls');
 var MouseControls = require('./MouseControls');
@@ -13,6 +14,7 @@ var vrEffect;
 var vrControls;
 var mouseControls;
 var headControls;
+var objects = [];
 
 var mouse = new THREE.Vector2(), INTERSECTED;
 var radius = 100, theta = 0;
@@ -23,6 +25,33 @@ var texture = THREE.ImageUtils.loadTexture( './src/imgs/room.jpg', THREE.UVMappi
 	animate();
 
 } );
+
+document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+
+function onDocumentMouseDown( event ) {
+
+    event.preventDefault();
+
+    var vector = new THREE.Vector3(
+        ( event.clientX / window.innerWidth ) * 2 - 1,
+      - ( event.clientY / window.innerHeight ) * 2 + 1,
+        0.5
+    );
+    vector.unproject( camera );
+
+    var ray = new THREE.Raycaster( camera.position, 
+                             vector.sub( camera.position ).normalize() );
+
+    var intersects = ray.intersectObjects( objects );
+
+    if ( intersects.length > 0 ) {
+        intersects[0].object.material.color.setHex( Math.random() * 0xffffff );
+    }
+
+}
+
+
+
 
 function init() {
 
@@ -61,6 +90,7 @@ function init() {
 		object.scale.y = Math.random() + 0.5;
 		object.scale.z = Math.random() + 0.5;
 
+		objects.push(object);
 		scene.add( object );
 
 	}
