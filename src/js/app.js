@@ -17,8 +17,12 @@ var headControls;
 var mouse = new THREE.Vector2(), INTERSECTED;
 var radius = 100, theta = 0;
 
-init();
-animate();
+var texture = THREE.ImageUtils.loadTexture( './src/imgs/room.jpg', THREE.UVMapping, function () {
+
+	init();
+	animate();
+
+} );
 
 function init() {
 
@@ -30,13 +34,18 @@ function init() {
 
 	scene = new THREE.Scene();
 
+
+	var mesh = new THREE.Mesh( new THREE.SphereGeometry( 500, 60, 40 ), new THREE.MeshBasicMaterial( { map: texture } ) );
+	mesh.scale.x = -1;
+	scene.add( mesh );
+
 	var light = new THREE.DirectionalLight( 0xffffff, 1 );
 	light.position.set( 1, 1, 1 ).normalize();
 	scene.add( light );
 
 	var geometry = new THREE.BoxGeometry( 20, 20, 20 );
 
-	for ( var i = 0; i < 2000; i ++ ) {
+	for ( var i = 0; i < 200; i ++ ) {
 
 		var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
 
@@ -144,12 +153,12 @@ function render() {
 
 	theta += 0.1;
 
-	camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
-	camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta ) );
-	camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
-	camera.lookAt( scene.position );
+	// camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
+	// camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta ) );
+	// camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
+	// camera.lookAt( scene.position );
 
-	camera.updateMatrixWorld();
+	// camera.updateMatrixWorld();
 
 	// find intersections
 
