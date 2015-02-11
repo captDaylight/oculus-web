@@ -20,50 +20,11 @@ var movingObject;
 var mouse = new THREE.Vector2(), INTERSECTED;
 var radius = 100, theta = 0;
 
-var tween, skyMaterials = [];
+var tween;
 
-var skyboxDirectories = [
-	'NeoShade',
-	'DeathStar',
-	'MetaCave',
-	'Vulcan',
-	'Starz',
-	'LineVort',
-	'Cube',
-	'LineCave',
-	'MindHelix'
-];
-function getSkyboxImageArray(location){
-	var path = './src/imgs/skyboxes/' + location + '/';
-    var format = '.jpg';
-    var urls = [
-    	path + 'px' + format, path + 'nx' + format,
-    	path + 'py' + format, path + 'ny' + format,
-    	path + 'pz' + format, path + 'nz' + format
-	];
-	return urls;
-}
-
-// START UP ALL OF THE SKY MATERIALS
-////////////////////
-var count = 0;
-for(var i = 0; i < skyboxDirectories.length; i++){
-	var urls = getSkyboxImageArray(skyboxDirectories[i]);
-	var textureCube = THREE.ImageUtils.loadTextureCube( urls, THREE.CubeRefractionMapping, function(){
-		count++;
-
-		if ( skyboxDirectories.length === count ) {
-			buzz.defaults.preload = 'auto';
-		}
-	} );
-	var material = new THREE.MeshBasicMaterial( { color: 0xeeeeee, envMap: textureCube, refractionRatio: 0.99 } );
-	// var material = new THREE.MeshBasicMaterial( { color: 0xaaaaff, envMap: textureCube } );
-	// var material = new THREE.MeshLambertMaterial( { color: 0xffffff, emissive: 0x0000ff, shading: THREE.FlatShading } );
-	skyMaterials.push({material: material, textureCube: textureCube});
-}
 
 ////////////////////
-var texture = THREE.ImageUtils.loadTexture( './src/imgs/room.jpg', THREE.UVMapping, function () {
+var texture = THREE.ImageUtils.loadTexture( './src/imgs/house.jpg', THREE.UVMapping, function () {
 
 	init();
 	animate();
@@ -112,7 +73,6 @@ function init() {
 	camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
 
 	scene = new THREE.Scene();
-
 
 	var mesh = new THREE.Mesh( new THREE.SphereGeometry( 500, 60, 40 ), new THREE.MeshBasicMaterial( { map: texture } ) );
 	mesh.scale.x = -1;
