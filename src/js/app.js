@@ -15,9 +15,12 @@ var vrControls;
 var mouseControls;
 var headControls;
 var objects = [];
+var movingObject;
 
 var mouse = new THREE.Vector2(), INTERSECTED;
 var radius = 100, theta = 0;
+
+var tween;
 
 var texture = THREE.ImageUtils.loadTexture( './src/imgs/room.jpg', THREE.UVMapping, function () {
 
@@ -45,7 +48,12 @@ function onDocumentMouseDown( event ) {
     var intersects = ray.intersectObjects( objects );
 
     if ( intersects.length > 0 ) {
-    	console.log(intersects[0]);
+    	movingObject = intersects[0].object;
+
+    	tween = new TWEEN.Tween(intersects[0].object.position).to(camera.position, 1000);
+    	tween.easing(TWEEN.Easing.Quadratic.In)
+    	tween.start();
+
         intersects[0].object.material.color.setHex( Math.random() * 0xffffff );
     }
 
@@ -184,12 +192,12 @@ function render() {
 
 	theta += 0.1;
 
-	// camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
-	// camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta ) );
-	// camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
-	// camera.lookAt( scene.position );
+	camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
+	camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta ) );
+	camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
+	camera.lookAt( scene.position );
 
-	// camera.updateMatrixWorld();
+	camera.updateMatrixWorld();
 
 	// find intersections
 
@@ -216,6 +224,8 @@ function render() {
 		INTERSECTED = null;
 
 	}
+
+	TWEEN.update();
 
 	headControls.update();
 	vrEffect.render( scene, camera );
