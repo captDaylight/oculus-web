@@ -1,7 +1,6 @@
 'use strict';
 // requires
 var THREE = require('./three');
-var Projector = require('./Projector');
 var VREffect = require('./VREffect');
 var VRControls = require('./VRControls');
 var MouseControls = require('./MouseControls');
