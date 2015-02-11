@@ -5,6 +5,7 @@ var VREffect = require('./VREffect');
 var VRControls = require('./VRControls');
 var MouseControls = require('./MouseControls');
 var Stats = require('./stats');
+var TWEEN = require('tween.js');
 
 // vars
 var container, stats;
@@ -44,6 +45,7 @@ function onDocumentMouseDown( event ) {
     var intersects = ray.intersectObjects( objects );
 
     if ( intersects.length > 0 ) {
+    	console.log(intersects[0]);
         intersects[0].object.material.color.setHex( Math.random() * 0xffffff );
     }
 
