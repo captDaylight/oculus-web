@@ -16,7 +16,8 @@ var mouseControls;
 var headControls;
 var objects = [];
 var movingObject;
-
+var matt = require('./matt');
+var triggerMatt = false;
 var mouse = new THREE.Vector2(), INTERSECTED;
 var radius = 100, theta = 0;
 
@@ -96,6 +97,11 @@ function setBackground() {
 	
 	scene.add( spheres[sphereCount] );
 	currentSphere = spheres[sphereCount];
+	if (sphereCount > 4) {
+		triggerMatt = true;
+		matt.init();
+		matt.animate();
+	};
 
 	++sphereCount;
 };
@@ -273,10 +279,18 @@ function render() {
 	TWEEN.update();
 
 	headControls.update();
-	vrEffect.render( scene, camera );
+	if (triggerMatt === false) {
+		vrEffect.render( scene, camera );	
+	} else {
+		vrEffect.render(matt.scene, matt.camera);
+	}
+	
 
 }
 createSpheres(textures);
 init();
 animate();
+
+
+
 
