@@ -24,8 +24,8 @@ var tween;
 var textures = [
 	'./src/imgs/desert.jpg',
 	'./src/imgs/matt.jpeg',
-	'./src/imgs/earth.jpg',
 	'./src/imgs/house.jpg',
+	'./src/imgs/earth.jpg',
 	'./src/imgs/island.jpg',
 	'./src/imgs/jup.jpg',
 	'./src/imgs/lobby.jpg',
@@ -33,6 +33,7 @@ var textures = [
 	'./src/imgs/room.jpg',
 	'./src/imgs/watersky.jpg'
 ];
+var sphereCount = 0;
 var spheres = [];
 var currentSphere;
 
@@ -86,12 +87,14 @@ function setBackground() {
 		scene.remove(currentSphere);
 	}
 
-	var x = getRandomInt(0, spheres.length - 1);
+	// var x = getRandomInt(0, spheres.length - 1);
 	
 	////////////////////
-
-	scene.add( spheres[x] );
-	currentSphere = spheres[x];
+	
+	scene.add( spheres[sphereCount] );
+	currentSphere = spheres[sphereCount];
+	
+	++sphereCount;
 };
 
 function init() {
