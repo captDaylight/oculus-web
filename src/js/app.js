@@ -23,6 +23,7 @@ var radius = 100, theta = 0;
 var tween;
 var textures = [
 	'./src/imgs/desert.jpg',
+	'./src/imgs/matt.jpeg',
 	'./src/imgs/earth.jpg',
 	'./src/imgs/house.jpg',
 	'./src/imgs/island.jpg',
@@ -30,7 +31,7 @@ var textures = [
 	'./src/imgs/lobby.jpg',
 	'./src/imgs/office.jpg',
 	'./src/imgs/room.jpg',
-	'./src/imgs/watersky.jpg',
+	'./src/imgs/watersky.jpg'
 ];
 var spheres = [];
 var currentSphere;
