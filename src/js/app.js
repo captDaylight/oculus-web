@@ -37,11 +37,7 @@ function onDocumentMouseDown( event ) {
 
     event.preventDefault();
 
-    var vector = new THREE.Vector3(
-        ( mouse.clientX / window.innerWidth ) * 2 - 1,
-      - ( mouse.clientY / window.innerHeight ) * 2 + 1,
-        0.5
-    );
+    var vector = new THREE.Vector3();
     vector.unproject( camera );
 
     var ray = new THREE.Raycaster( camera.position, 
@@ -84,7 +80,7 @@ function init() {
 
 	var geometry = new THREE.BoxGeometry( 20, 20, 20 );
 
-	for ( var i = 0; i < 2000; i ++ ) {
+	for ( var i = 0; i < 200; i ++ ) {
 
 		var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
 
@@ -206,11 +202,7 @@ function render() {
 
 	// var intersects = raycaster.intersectObjects( scene.children );
 
-    var vector = new THREE.Vector3(
-        ( mouse.clientX / window.innerWidth ) * 2 - 1,
-      - ( mouse.clientY / window.innerHeight ) * 2 + 1,
-        0.5
-    );
+    var vector = new THREE.Vector3();
     vector.unproject( camera );
 
     var ray = new THREE.Raycaster( camera.position, 
