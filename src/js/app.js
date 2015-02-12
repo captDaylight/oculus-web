@@ -41,34 +41,37 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+document.addEventListener( 'keydown', onDocumentKeyDown, false );
 
-function onDocumentMouseDown( event ) {
+function onDocumentKeyDown( event ) {
 
     event.preventDefault();
-
-    var vector = new THREE.Vector3();
-    vector.unproject( camera );
-
-    var ray = new THREE.Raycaster( camera.position, 
-                             vector.sub( camera.position ).normalize() );
-
-    var intersects = ray.intersectObjects( objects );
-
-    if ( intersects.length > 0 ) {
-    	movingObject = intersects[0].object;
     
-    	tween = new TWEEN.Tween(intersects[0].object.position)
-    		.to(camera.position, 1000)
-    		.onComplete(function () {
-    			setBackground();
-    		});
+    if (event.keyCode === 32) {
+	    var vector = new THREE.Vector3();
+	    vector.unproject( camera );
 
-    	tween.easing(TWEEN.Easing.Quadratic.In)
-    	tween.start();
+	    var ray = new THREE.Raycaster( camera.position, 
+	                             vector.sub( camera.position ).normalize() );
 
-        intersects[0].object.material.color.setHex( Math.random() * 0xffffff );
+	    var intersects = ray.intersectObjects( objects );
+
+	    if ( intersects.length > 0 ) {
+	    	movingObject = intersects[0].object;
+	    
+	    	tween = new TWEEN.Tween(intersects[0].object.position)
+	    		.to(camera.position, 1000)
+	    		.onComplete(function () {
+	    			setBackground();
+	    		});
+
+	    	tween.easing(TWEEN.Easing.Quadratic.In)
+	    	tween.start();
+
+	        intersects[0].object.material.color.setHex( Math.random() * 0xffffff );
+	    }    	
     }
+
 }
 
 function createSpheres(textures) {
@@ -93,7 +96,7 @@ function setBackground() {
 	
 	scene.add( spheres[sphereCount] );
 	currentSphere = spheres[sphereCount];
-	
+
 	++sphereCount;
 };
 
