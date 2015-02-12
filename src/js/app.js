@@ -23,10 +23,17 @@ var radius = 100, theta = 0;
 var tween;
 var textures = [
 	'./src/imgs/desert.jpg',
+	'./src/imgs/earth.jpg',
 	'./src/imgs/house.jpg',
+	'./src/imgs/island.jpg',
+	'./src/imgs/jup.jpg',
 	'./src/imgs/lobby.jpg',
+	'./src/imgs/office.jpg',
+	'./src/imgs/room.jpg',
+	'./src/imgs/watersky.jpg',
 ];
-var sphereMesh;
+var spheres = [];
+var currentSphere;
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -60,25 +67,32 @@ function onDocumentMouseDown( event ) {
 
         intersects[0].object.material.color.setHex( Math.random() * 0xffffff );
     }
+}
 
+function createSpheres(textures) {
+	textures.forEach(function (tex) {
+		var texture = THREE.ImageUtils.loadTexture( tex, THREE.UVMapping, function () {} );
+
+		var sphereMesh = new THREE.Mesh( new THREE.SphereGeometry( 500, 60, 40 ), new THREE.MeshBasicMaterial( { map: texture } ) );
+		sphereMesh.scale.x = -1;
+		spheres.push(sphereMesh);
+	});
 }
 
 function setBackground() {
 	
-	if (typeof sphereMesh != 'undefined') {
-		scene.remove(sphereMesh);
+	if (typeof currentSphere != 'undefined') {
+		scene.remove(currentSphere);
 	}
 
-	var x = getRandomInt(0, textures.length - 1);
-	console.log(x);
+	var x = getRandomInt(0, spheres.length - 1);
+	
 	////////////////////
-	var texture = THREE.ImageUtils.loadTexture( textures[x], THREE.UVMapping, function () {} );
 
-	sphereMesh = new THREE.Mesh( new THREE.SphereGeometry( 500, 60, 40 ), new THREE.MeshBasicMaterial( { map: texture } ) );
-	sphereMesh.scale.x = -1;
-	scene.add( sphereMesh );
+	scene.add( spheres[x] );
+	currentSphere = spheres[x];
 };
-console.log('here');
+
 function init() {
 
 	container = document.createElement( 'div' );
@@ -88,7 +102,6 @@ function init() {
 	camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
 
 	scene = new THREE.Scene();
-	console.log('init');
 	setBackground();
 	// var mesh = new THREE.Mesh( new THREE.SphereGeometry( 500, 60, 40 ), new THREE.MeshBasicMaterial( { map: texture } ) );
 	// mesh.scale.x = -1;
@@ -256,6 +269,7 @@ function render() {
 	vrEffect.render( scene, camera );
 
 }
-		init();
-		animate();
+createSpheres(textures);
+init();
+animate();
 
