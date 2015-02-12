@@ -22,7 +22,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "three": "^0.7.0",
     "tween.js": "^0.14.0"
   },
   "devDependencies": {
