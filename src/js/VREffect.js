@@ -53,6 +53,7 @@ module.exports = function ( renderer, done ) {
 					self.rightEyeTranslation = vrHMD.getEyeTranslation( "right" );
 					self.leftEyeFOV = vrHMD.getRecommendedEyeFieldOfView( "left" );
 					self.rightEyeFOV = vrHMD.getRecommendedEyeFieldOfView( "right" );
+					self.camera = cameraLeft;
 					break; // We keep the first we encounter
 				}
 			}

@@ -24,7 +24,7 @@ var tween;
 
 
 ////////////////////
-var texture = THREE.ImageUtils.loadTexture( './src/imgs/house.jpg', THREE.UVMapping, function () {
+var texture = THREE.ImageUtils.loadTexture( './src/imgs/desert.jpg', THREE.UVMapping, function () {
 
 	init();
 	animate();
@@ -38,8 +38,8 @@ function onDocumentMouseDown( event ) {
     event.preventDefault();
 
     var vector = new THREE.Vector3(
-        ( event.clientX / window.innerWidth ) * 2 - 1,
-      - ( event.clientY / window.innerHeight ) * 2 + 1,
+        ( mouse.clientX / window.innerWidth ) * 2 - 1,
+      - ( mouse.clientY / window.innerHeight ) * 2 + 1,
         0.5
     );
     vector.unproject( camera );
@@ -84,7 +84,7 @@ function init() {
 
 	var geometry = new THREE.BoxGeometry( 20, 20, 20 );
 
-	for ( var i = 0; i < 200; i ++ ) {
+	for ( var i = 0; i < 2000; i ++ ) {
 
 		var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
 
@@ -191,20 +191,32 @@ function animate() {
 
 function render() {
 
-	theta += 0.1;
+	// theta += 0.1;
 
-	camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
-	camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta ) );
-	camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
-	camera.lookAt( scene.position );
+	// camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
+	// camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta ) );
+	// camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
+	// camera.lookAt( scene.position );
 
-	camera.updateMatrixWorld();
+	// camera.updateMatrixWorld();
+
 
 	// find intersections
+	// raycaster.setFromCamera( {x:window.innerWidth/4, y: window.innerHeight/2}, vrEffect.camera );
 
-	raycaster.setFromCamera( mouse, camera );
+	// var intersects = raycaster.intersectObjects( scene.children );
 
-	var intersects = raycaster.intersectObjects( scene.children );
+    var vector = new THREE.Vector3(
+        ( mouse.clientX / window.innerWidth ) * 2 - 1,
+      - ( mouse.clientY / window.innerHeight ) * 2 + 1,
+        0.5
+    );
+    vector.unproject( camera );
+
+    var ray = new THREE.Raycaster( camera.position, 
+                             vector.sub( camera.position ).normalize() );
+
+    var intersects = ray.intersectObjects( objects );
 
 	if ( intersects.length > 0 ) {
 
@@ -232,3 +244,8 @@ function render() {
 	vrEffect.render( scene, camera );
 
 }
+
+setTimeout(function () {
+	console.log(camera);
+	console.log(vrEffect.camera);
+},2000);
