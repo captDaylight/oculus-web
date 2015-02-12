@@ -21,15 +21,16 @@ var mouse = new THREE.Vector2(), INTERSECTED;
 var radius = 100, theta = 0;
 
 var tween;
+var textures = [
+	'./src/imgs/desert.jpg',
+	'./src/imgs/house.jpg',
+	'./src/imgs/lobby.jpg',
+];
+var sphereMesh;
 
-
-////////////////////
-var texture = THREE.ImageUtils.loadTexture( './src/imgs/desert.jpg', THREE.UVMapping, function () {
-
-	init();
-	animate();
-
-} );
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 document.addEventListener( 'mousedown', onDocumentMouseDown, false );
 
@@ -47,8 +48,13 @@ function onDocumentMouseDown( event ) {
 
     if ( intersects.length > 0 ) {
     	movingObject = intersects[0].object;
+    
+    	tween = new TWEEN.Tween(intersects[0].object.position)
+    		.to(camera.position, 1000)
+    		.onComplete(function () {
+    			setBackground();
+    		});
 
-    	tween = new TWEEN.Tween(intersects[0].object.position).to(camera.position, 1000);
     	tween.easing(TWEEN.Easing.Quadratic.In)
     	tween.start();
 
@@ -57,9 +63,22 @@ function onDocumentMouseDown( event ) {
 
 }
 
+function setBackground() {
+	
+	if (typeof sphereMesh != 'undefined') {
+		scene.remove(sphereMesh);
+	}
 
+	var x = getRandomInt(0, textures.length - 1);
+	console.log(x);
+	////////////////////
+	var texture = THREE.ImageUtils.loadTexture( textures[x], THREE.UVMapping, function () {} );
 
-
+	sphereMesh = new THREE.Mesh( new THREE.SphereGeometry( 500, 60, 40 ), new THREE.MeshBasicMaterial( { map: texture } ) );
+	sphereMesh.scale.x = -1;
+	scene.add( sphereMesh );
+};
+console.log('here');
 function init() {
 
 	container = document.createElement( 'div' );
@@ -69,10 +88,11 @@ function init() {
 	camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
 
 	scene = new THREE.Scene();
-
-	var mesh = new THREE.Mesh( new THREE.SphereGeometry( 500, 60, 40 ), new THREE.MeshBasicMaterial( { map: texture } ) );
-	mesh.scale.x = -1;
-	scene.add( mesh );
+	console.log('init');
+	setBackground();
+	// var mesh = new THREE.Mesh( new THREE.SphereGeometry( 500, 60, 40 ), new THREE.MeshBasicMaterial( { map: texture } ) );
+	// mesh.scale.x = -1;
+	// scene.add( mesh );
 
 	var light = new THREE.DirectionalLight( 0xffffff, 1 );
 	light.position.set( 1, 1, 1 ).normalize();
@@ -236,8 +256,6 @@ function render() {
 	vrEffect.render( scene, camera );
 
 }
+		init();
+		animate();
 
-setTimeout(function () {
-	console.log(camera);
-	console.log(vrEffect.camera);
-},2000);
